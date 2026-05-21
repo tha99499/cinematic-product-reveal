@@ -30,14 +30,26 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="lg:col-span-7 rounded-[32px] overflow-hidden bg-white/5 border border-white/10 min-h-[500px] flex items-center justify-center">
+          <div className="relative lg:col-span-7 rounded-[32px] overflow-hidden bg-white/5 border border-white/10 min-h-[500px] group">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
             <img
               src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae"
               alt="Keyboard"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
             />
+            <div className="absolute bottom-8 left-8 z-20">
+              <p className="text-sm uppercase tracking-[0.2em] text-gray-300">
+                Precision Engineered
+              </p>
+              <h3 className="text-3xl lg:text-4xl font-bold mt-2">
+                Aurora X1
+              </h3>
+              <p className="text-gray-300 mt-3 max-w-sm">
+                Crafted with premium materials and tactile switches for an immersive typing experience.
+              </p>
+            </div>
           </div>
-
+          
         </div>
       </section>
     </main>
