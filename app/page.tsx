@@ -1,19 +1,53 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { features } from './data/features';
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+    },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
 
 export default function Home() {
   return (
     <main className="relative overflow-hidden min-h-screen bg-[#0B0B0B] text-white">
 
-      {/* Ambient Glow Effects */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-500/20 blur-3xl rounded-full" />
 
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 blur-3xl rounded-full" />
 
       <section className="max-w-7xl mx-auto px-6 py-20">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+        >
 
-          <div className="lg:col-span-5 flex flex-col justify-center">
+          <motion.div
+            variants={fadeUp}
+            className="lg:col-span-5 flex flex-col justify-center"
+          >
+
             <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">
               Premium Mechanical Keyboard
             </p>
@@ -29,7 +63,6 @@ export default function Home() {
               Crafted for creators, developers, and enthusiasts who demand precision and elegance.
             </p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
 
               <button className="px-8 py-4 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 hover:scale-105 active:scale-95 transition-all duration-300">
@@ -40,8 +73,14 @@ export default function Home() {
                 Explore Collection
               </button>
             </div>
-          </div>
-          <div className="relative lg:col-span-7 rounded-[32px] overflow-hidden bg-white/5 border border-white/10 min-h-[500px] group">
+
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            className="relative lg:col-span-7 rounded-[32px] overflow-hidden bg-white/5 border border-white/10 min-h-[500px] group"
+          >
+
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
             <img
               src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae"
@@ -59,9 +98,9 @@ export default function Home() {
                 Crafted with premium materials and tactile switches for an immersive typing experience.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
         <div className="mt-16 mb-6">
 
@@ -71,10 +110,17 @@ export default function Home() {
 
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10"
+        >
 
           {features.map((feature) => (
-            <div
+            <motion.div
+              variants={fadeUp}
               key={feature.title}
               className="p-6 rounded-3xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-xl hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
@@ -91,10 +137,10 @@ export default function Home() {
                 {feature.description}
               </p>
 
-            </div>
+            </motion.div>
           ))}
 
-        </div>
+        </motion.div>
 
       </section>
     </main>
