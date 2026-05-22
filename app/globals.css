@@ -19,6 +19,20 @@
   }
 }
 
+* {
+  cursor: none;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+::selection {
+  background: #facc15;
+  color: black;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

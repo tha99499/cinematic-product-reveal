@@ -3,10 +3,13 @@
 import Hero from "./components/Hero";
 import FeatureGrid from "./components/FeatureGrid";
 import FloatingBackground from "./components/FloatingBackground";
+import CustomCursor from "./components/CustomCursor";
 
 export default function Home() {
   return (
     <main className="relative overflow-hidden min-h-screen bg-[#0B0B0B] text-white">
+
+       <CustomCursor />
 
       <FloatingBackground />
 
