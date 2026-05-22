@@ -7,11 +7,12 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
+  Variants
 } from "framer-motion";
 
 import { useRef } from "react";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
