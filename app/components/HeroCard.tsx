@@ -29,8 +29,8 @@ const fadeUp = {
 };
 
 const springConfig = {
-  stiffness: 120,
-  damping: 20,
+  stiffness: 100,
+  damping: 25,
 };
 
 export default function HeroCard() {
@@ -40,12 +40,12 @@ export default function HeroCard() {
   const y = useMotionValue(0);
 
   const rotateX = useSpring(
-    useTransform(y, [-0.5, 0.5], [10, -10]),
+    useTransform(y, [-0.5, 0.5], [12, -12]),
     springConfig
   );
 
   const rotateY = useSpring(
-    useTransform(x, [-0.5, 0.5], [-10, 10]),
+    useTransform(x, [-0.5, 0.5], [-12, 12]),
     springConfig
   );
 
@@ -55,7 +55,7 @@ export default function HeroCard() {
   const background = useMotionTemplate`
     radial-gradient(
       circle at ${glowX} ${glowY},
-      rgba(255,255,255,0.15),
+      rgba(250,204,21,0.18),
       transparent 40%
     )
   `;
@@ -91,18 +91,30 @@ export default function HeroCard() {
       variants={fadeUp}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      whileHover={{
+        scale: 1.02,
+        y: -6,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 180,
+        damping: 20,
+      }}
       style={{
         rotateX,
         rotateY,
         transformPerspective: 1200,
+        transformStyle: "preserve-3d",
       }}
-      className="relative lg:col-span-7 rounded-[32px] overflow-hidden bg-white/5 border border-white/10 min-h-[500px] group will-change-transform"
+      className="relative lg:col-span-7 rounded-[32px] overflow-hidden bg-white/5 border border-white/10 min-h-[500px] group will-change-transform shadow-[0_40px_120px_rgba(0,0,0,0.45)]"
     >
 
       <motion.div
         style={{ background }}
         className="absolute inset-0 z-10"
       />
+
+      <div className="absolute inset-0 opacity-[0.03] mix-blend-soft-light bg-[url('/noise.png')] z-10" />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-20" />
 
@@ -135,13 +147,18 @@ export default function HeroCard() {
 
       </motion.div>
 
-      <div className="absolute bottom-8 left-8 z-30">
+      <div
+        className="absolute bottom-8 left-8 z-30"
+        style={{
+          transform: "translateZ(50px)",
+        }}
+      >
 
         <p className="text-sm uppercase tracking-[0.2em] text-gray-300">
           Precision Engineered
         </p>
 
-        <h3 className="text-3xl lg:text-4xl font-bold mt-2">
+        <h3 className="text-3xl lg:text-4xl font-semibold tracking-tight mt-2">
           Aurora X1
         </h3>
 
