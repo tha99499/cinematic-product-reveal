@@ -10,7 +10,7 @@ export default function FloatingBackground() {
         transition={{
           duration: 6,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: [0.16, 1, 0.3, 1] as const,
         }}
         className="absolute top-20 left-10 w-72 h-72 bg-yellow-500/20 blur-3xl rounded-full"
       />
@@ -20,7 +20,7 @@ export default function FloatingBackground() {
         transition={{
           duration: 8,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: [0.16, 1, 0.3, 1] as const,
         }}
         className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 blur-3xl rounded-full"
       />
